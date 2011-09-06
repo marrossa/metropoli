@@ -55,6 +55,13 @@ module Metropoli
                    :only => [:id],
                    :methods => [:to_s])
     end
+
+    def self.by_state(state)
+      unless state.blank?
+        results = self.includes(:state)
+        results = results.merge(state_class.is(state))
+      end
+    end
   
   end
 end
