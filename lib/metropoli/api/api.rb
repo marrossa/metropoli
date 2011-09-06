@@ -22,6 +22,11 @@ module Metropoli
       jsonify(@countries)
     end
   
+    get '/cities_by_state.json' do
+      @cities_by_state = city_class.by_state(params[:q])
+      jsonify(@cities_by_state)
+    end
+
     private
   
     def jsonify(resource_array)
